@@ -12,7 +12,7 @@ import com.github.vsyx.premiumcalculator.models.Premium;
 
 public class PremiumCalculator
 {
-    private static final Map<RiskType, Premium> premiumCoefficientLookupTable = Map.ofEntries(
+    private static final Map<RiskType, Premium> RISK_COEFFICIENT_LOOKUP_TABLE = Map.ofEntries(
         Map.entry(RiskType.FIRE, new Premium(0.014) {
             @Override
             public double getCoefficient(double sumInsured) {
@@ -46,7 +46,7 @@ public class PremiumCalculator
             .mapToDouble(PolicySubObject::sumInsured)
             .sum();
 
-        return PremiumCalculator.premiumCoefficientLookupTable.get(riskType)
+        return PremiumCalculator.RISK_COEFFICIENT_LOOKUP_TABLE.get(riskType)
             .getCoefficient(totalSumInsured) * totalSumInsured;
     }
 
