@@ -1,13 +1,15 @@
 package com.github.vsyx.premiumcalculator.models;
 
+import java.math.BigDecimal;
+
 public class Premium {
-    protected double defaultCoefficient;
+    protected BigDecimal defaultCoefficient;
 
     public Premium(double defaultCoefficient) {
-        this.defaultCoefficient = defaultCoefficient;
+        this.defaultCoefficient = BigDecimal.valueOf(defaultCoefficient);
     }
 
-    public double getCoefficient(double sumInsured) {
+    public BigDecimal getCoefficient(BigDecimal _sumInsured) {
         return defaultCoefficient;
     }
 }
