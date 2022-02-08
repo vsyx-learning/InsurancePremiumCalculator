@@ -1,6 +1,6 @@
 package com.github.vsyx.premiumcalculator;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,8 +9,10 @@ import java.util.List;
 import com.github.vsyx.premiumcalculator.enums.*;
 import com.github.vsyx.premiumcalculator.models.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
+@SpringBootTest
 public class PremiumCalculatorTest
 {
     private static final int BIGDECIMAL_SCALE = 5;

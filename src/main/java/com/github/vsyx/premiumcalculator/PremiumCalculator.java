@@ -10,6 +10,10 @@ import com.github.vsyx.premiumcalculator.models.Policy;
 import com.github.vsyx.premiumcalculator.models.PolicyObject;
 import com.github.vsyx.premiumcalculator.models.PolicySubObject;
 import com.github.vsyx.premiumcalculator.models.Premium;
+
+import org.springframework.stereotype.Service;
+
+@Service
 public class PremiumCalculator
 {
     private static final Map<RiskType, Premium> RISK_COEFFICIENT_LOOKUP_TABLE = Map.ofEntries(
