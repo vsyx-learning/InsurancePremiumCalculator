@@ -14,15 +14,23 @@ public class PremiumCalculator
 {
     private static final Map<RiskType, Premium> RISK_COEFFICIENT_LOOKUP_TABLE = Map.ofEntries(
         Map.entry(RiskType.FIRE, new Premium(0.014) {
+            private final BigDecimal increasedCoefficientTreshold = BigDecimal.valueOf(100);
+            private final BigDecimal increasedCoefficient = BigDecimal.valueOf(0.024);
+
             @Override
             public BigDecimal getCoefficient(BigDecimal sumInsured) {
-                return sumInsured.compareTo(BigDecimal.valueOf(100)) > 0 ? BigDecimal.valueOf(0.024) : this.defaultCoefficient;
+                return sumInsured.compareTo(increasedCoefficientTreshold) > 0
+                ? increasedCoefficient : this.defaultCoefficient;
             }
         }),
         Map.entry(RiskType.THEFT, new Premium(0.11) {
+            private final BigDecimal decreasedCoefficientTreshold = BigDecimal.valueOf(15);
+            private final BigDecimal decreasedCoefficient = BigDecimal.valueOf(0.05);
+
             @Override
             public BigDecimal getCoefficient(BigDecimal sumInsured) {
-                return sumInsured.compareTo(BigDecimal.valueOf(15)) >= 0 ? BigDecimal.valueOf(0.05) : this.defaultCoefficient;
+                return sumInsured.compareTo(decreasedCoefficientTreshold) >= 0
+                ? decreasedCoefficient : this.defaultCoefficient;
             }
         })
     );
